@@ -43,7 +43,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     id: 'parking',
     q: "What's parking like?",
-    a: 'Free street parking is available directly outside each home. Denali View Retreat and Urban Gem also have on-site parking spots. Anchorage parking enforcement is minimal in this neighborhood.',
+    a: 'Free street parking is available directly outside each home. Denali View Retreat and Urban Gem also have on-site parking spots.',
   },
   {
     id: 'northern-lights',
