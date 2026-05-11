@@ -6,6 +6,7 @@ import { units, getUnitBySlug, formatRateRange, type Unit } from '@/lib/units';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { PhotoGallery } from '@/components/PhotoGallery';
+import { InquiryForm } from '@/components/InquiryForm';
 
 type RouteParams = { slug: string };
 
@@ -214,40 +215,40 @@ function UnitAmenities({ unit }: { unit: Unit }) {
 
 function UnitInquireBlock({ unit }: { unit: Unit }) {
   return (
-    <section id="contact" className="scroll-mt-20 bg-primary px-6 py-20 text-primary-foreground">
-      <div className="mx-auto max-w-3xl text-center">
-        <p className="font-sans text-xs uppercase tracking-[0.3em] text-accent">Reserve</p>
-        <h2 className="mt-3 font-serif text-3xl md:text-4xl">
-          Inquire about {unit.name}.
-        </h2>
-        <p className="mt-4 text-base leading-relaxed opacity-85 md:text-lg">
-          Tell us your dates and we&rsquo;ll be in touch.
-        </p>
-        <p className="mt-3 text-base leading-relaxed opacity-85 md:text-lg">
-          Prefer to talk it through? Reach our team directly at{' '}
-          <a href="tel:9072232344" className="underline-offset-4 hover:underline">
-            (907) 223-2344
-          </a>
-          .
-        </p>
-        <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <a
-            href={`mailto:experience@bootleggerslanding.com?subject=${encodeURIComponent(
-              `Inquiry about ${unit.name}`,
-            )}`}
-            className="flex min-h-11 items-center justify-center rounded-md bg-accent px-7 py-3 text-sm font-medium uppercase tracking-wider text-accent-foreground transition hover:opacity-90"
-          >
-            Email Us
-          </a>
+    <section
+      id="contact"
+      className="scroll-mt-20 bg-primary px-6 py-20 text-primary-foreground"
+    >
+      <div className="mx-auto max-w-4xl">
+        <div className="text-center">
+          <p className="font-sans text-xs uppercase tracking-[0.3em] text-accent">Reserve</p>
+          <h2 className="mt-3 font-serif text-3xl md:text-4xl">
+            Inquire about {unit.name}.
+          </h2>
+          <p className="mt-4 text-base leading-relaxed opacity-85 md:text-lg">
+            Send your dates and we&rsquo;ll be in touch shortly. Prefer to talk it through?
+            Call{' '}
+            <a href="tel:9072232344" className="text-accent underline-offset-4 hover:underline">
+              (907) 223-2344
+            </a>
+            .
+          </p>
+        </div>
+        <div className="mt-10">
+          <InquiryForm defaultUnit={unit.slug} heading="" variant="dark" />
+        </div>
+        <p className="mt-8 text-center text-sm opacity-80">
+          Or book directly on{' '}
           <a
             href={unit.airbnbUrl}
             target="_blank"
             rel="noopener"
-            className="flex min-h-11 items-center justify-center rounded-md border border-white/60 px-7 py-3 text-sm font-medium uppercase tracking-wider text-white transition hover:bg-white/10"
+            className="text-accent underline-offset-4 hover:underline"
           >
-            Book on Airbnb
+            Airbnb
           </a>
-        </div>
+          .
+        </p>
       </div>
     </section>
   );

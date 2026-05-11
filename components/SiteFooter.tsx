@@ -3,10 +3,7 @@ import Image from 'next/image';
 export function SiteFooter() {
   const year = new Date().getFullYear();
   return (
-    <footer
-      id="contact"
-      className="scroll-mt-20 bg-primary px-6 pb-8 pt-16 text-center text-primary-foreground"
-    >
+    <footer className="bg-primary px-6 pb-8 pt-16 text-center text-primary-foreground">
       <div className="mx-auto flex max-w-4xl flex-col items-center">
         <Image
           src="/images/Bootleggers-Landing-Logo.png"

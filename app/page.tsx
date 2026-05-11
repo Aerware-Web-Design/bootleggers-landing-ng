@@ -3,6 +3,7 @@ import { units } from '@/lib/units';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { UnitCard } from '@/components/UnitCard';
+import { InquiryForm } from '@/components/InquiryForm';
 
 const HOMEPAGE_ORDER = ['denali-view-retreat', 'waterfront-hideaway', 'urban-gem'];
 
@@ -19,6 +20,7 @@ export default function HomePage() {
         <AboutBuilding />
         <Stays />
         <FAQ />
+        <Contact />
       </main>
       <SiteFooter />
     </>
@@ -192,6 +194,28 @@ function FAQ() {
               </>
             }
           />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Contact() {
+  return (
+    <section id="contact" className="scroll-mt-20 px-6 py-24">
+      <div className="mx-auto max-w-4xl">
+        <div className="text-center">
+          <p className="font-sans text-xs uppercase tracking-[0.3em] text-accent">Inquire</p>
+          <h2 className="mt-4 font-serif text-3xl text-primary md:text-4xl">
+            Tell us about your stay.
+          </h2>
+          <p className="mt-4 text-base text-muted-foreground md:text-lg">
+            Send your dates and a few details and we&rsquo;ll be in touch shortly. Not sure
+            which home is the right fit? We&rsquo;ll help you decide.
+          </p>
+        </div>
+        <div className="mt-12">
+          <InquiryForm heading="" />
         </div>
       </div>
     </section>
