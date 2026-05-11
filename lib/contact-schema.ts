@@ -2,6 +2,7 @@ import { z } from 'zod';
 import { units } from './units';
 
 const unitSlugs = units.map((u) => u.slug);
+const allowedUnitValues = new Set<string>([...unitSlugs, 'unsure']);
 
 export const UNIT_OPTIONS = [
   ...units.map((u) => ({ value: u.slug, label: u.name })),
@@ -24,9 +25,9 @@ export const inquirySchema = z.object({
     .int()
     .min(1, 'At least one guest')
     .max(20, 'For groups larger than 20, contact us directly'),
-  unit: z.enum([...unitSlugs, 'unsure'] as [string, ...string[]], {
-    errorMap: () => ({ message: 'Choose a home' }),
-  }),
+  unit: z
+    .string()
+    .refine((v) => allowedUnitValues.has(v), { message: 'Choose a home' }),
   message: z
     .string()
     .max(2000, 'Keep it under 2,000 characters')
