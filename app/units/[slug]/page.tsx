@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { units, getUnitBySlug, formatRateRange, type Unit } from '@/lib/units';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
+import { PhotoGallery } from '@/components/PhotoGallery';
 
 type RouteParams = { slug: string };
 
@@ -176,23 +177,12 @@ function UnitGallery({ unit }: { unit: Unit }) {
         <h2 className="mt-3 text-center font-serif text-3xl text-primary md:text-4xl">
           A closer look.
         </h2>
-        <div className="mt-12 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {unit.photos.map((photo, i) => (
-            <div
-              key={photo.src}
-              className={`relative aspect-[4/3] overflow-hidden rounded-md ${
-                i === 0 ? 'sm:col-span-2 sm:row-span-2 lg:col-span-2 lg:row-span-2' : ''
-              }`}
-            >
-              <Image
-                src={photo.src}
-                alt={photo.alt}
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-cover transition duration-500 hover:scale-105"
-              />
-            </div>
-          ))}
+        <p className="mt-3 text-center text-sm text-muted-foreground">
+          Click any photo to open the full gallery. Use the arrow keys or click anywhere
+          outside the image to close.
+        </p>
+        <div className="mt-10">
+          <PhotoGallery photos={unit.photos} />
         </div>
       </div>
     </section>
