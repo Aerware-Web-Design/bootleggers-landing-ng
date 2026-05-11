@@ -7,6 +7,7 @@ import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { PhotoGallery } from '@/components/PhotoGallery';
 import { InquiryForm } from '@/components/InquiryForm';
+import { SchemaMarkup } from '@/components/SchemaMarkup';
 
 type RouteParams = { slug: string };
 
@@ -40,6 +41,7 @@ export default async function UnitDetailPage(
 
   return (
     <>
+      <SchemaMarkup featuredSlug={unit.slug} />
       <SiteHeader inquireHref="#contact" />
       <main id="top">
         <UnitHero unit={unit} />

@@ -5,6 +5,7 @@ import { SiteFooter } from '@/components/SiteFooter';
 import { UnitCard } from '@/components/UnitCard';
 import { InquiryForm } from '@/components/InquiryForm';
 import { FAQ } from '@/components/FAQ';
+import { SchemaMarkup } from '@/components/SchemaMarkup';
 
 const HOMEPAGE_ORDER = ['denali-view-retreat', 'waterfront-hideaway', 'urban-gem'];
 
@@ -15,6 +16,7 @@ const orderedUnits = HOMEPAGE_ORDER.map(
 export default function HomePage() {
   return (
     <>
+      <SchemaMarkup includeFaq />
       <SiteHeader />
       <main id="top">
         <Hero />
