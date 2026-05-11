@@ -4,6 +4,7 @@ import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { UnitCard } from '@/components/UnitCard';
 import { InquiryForm } from '@/components/InquiryForm';
+import { FAQ } from '@/components/FAQ';
 
 const HOMEPAGE_ORDER = ['denali-view-retreat', 'waterfront-hideaway', 'urban-gem'];
 
@@ -136,70 +137,6 @@ function Stays() {
   );
 }
 
-function FAQ() {
-  return (
-    <section id="faq" className="scroll-mt-20 bg-secondary px-6 py-24">
-      <div className="mx-auto max-w-3xl">
-        <div className="text-center">
-          <p className="font-sans text-xs uppercase tracking-[0.3em] text-accent">FAQ</p>
-          <h2 className="mt-4 font-serif text-3xl text-primary md:text-4xl">
-            A few details, before you book.
-          </h2>
-        </div>
-        <div className="mt-12 space-y-8">
-          <FaqItem
-            q="How is Bootleggers Landing different from a hotel?"
-            a="Each home is private and fully self-contained — your own gourmet kitchen, your own living spaces, your own thermostat. No shared corridors, no front desk, no breakfast room. Just the entire property to yourself, in one of Anchorage's most desirable neighborhoods."
-          />
-          <FaqItem
-            q="Where exactly are the homes?"
-            a="All three sit on the same property in Bootleggers' Cove, on Anchorage's coastal edge. Each has its own address and its own private entrance."
-          />
-          <FaqItem
-            q="Can I rent more than one at a time?"
-            a={
-              <>
-                Yes. Larger groups frequently book multiple homes for family reunions, milestone
-                celebrations, or corporate retreats. Our Waterfront Hideaway can also be added to
-                a stay at the adjacent{' '}
-                <a
-                  href="https://luxuryanchorage.rentals"
-                  target="_blank"
-                  rel="noopener"
-                  className="text-accent underline-offset-4 hover:underline"
-                >
-                  Villa at Bootleggers Landing
-                </a>{' '}
-                to accommodate up to fourteen guests in one connected experience. Contact us to
-                coordinate.
-              </>
-            }
-          />
-          <FaqItem
-            q="Looking for the Villa with the rooftop hot tub?"
-            a={
-              <>
-                That&rsquo;s our flagship — The Villa at Bootleggers Landing, the 3,500 sq ft
-                luxury home featured on CBS Evening News, sleeping up to 10 with a year-round
-                rooftop hot tub, two fireplaces, and a 1,000 sq ft outdoor deck. Visit{' '}
-                <a
-                  href="https://luxuryanchorage.rentals"
-                  target="_blank"
-                  rel="noopener"
-                  className="text-accent underline-offset-4 hover:underline"
-                >
-                  luxuryanchorage.rentals
-                </a>{' '}
-                for details.
-              </>
-            }
-          />
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function Contact() {
   return (
     <section id="contact" className="scroll-mt-20 px-6 py-24">
@@ -222,11 +159,3 @@ function Contact() {
   );
 }
 
-function FaqItem({ q, a }: { q: string; a: React.ReactNode }) {
-  return (
-    <div>
-      <h3 className="font-serif text-lg text-primary">{q}</h3>
-      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{a}</p>
-    </div>
-  );
-}
