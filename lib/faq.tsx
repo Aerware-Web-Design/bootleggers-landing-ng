@@ -47,10 +47,9 @@ export const FAQ_ITEMS: FaqItem[] = [
     text: 'Free street parking is available directly outside each home. Denali View Retreat and Urban Gem each have their own private garage, ideal for travelers with rental cars or sensitive gear. Anchorage parking enforcement is minimal in this neighborhood.',
     a: (
       <>
-        Free street parking is available directly outside each home.{' '}
-        <strong>Denali View Retreat and Urban Gem each have their own private garage</strong>,
-        ideal for travelers with rental cars or sensitive gear. Anchorage parking enforcement is
-        minimal in this neighborhood.
+        Free street parking is available directly outside each home. Denali View Retreat and Urban
+        Gem each have their own private garage, ideal for travelers with rental cars or sensitive
+        gear. Anchorage parking enforcement is minimal in this neighborhood.
       </>
     ),
   },
