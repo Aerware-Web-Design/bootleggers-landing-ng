@@ -32,24 +32,28 @@ export default function HomePage() {
 
 function Hero() {
   return (
-    <section className="relative h-screen min-h-[680px] w-full overflow-hidden">
+    <section className="relative h-[75vh] min-h-[560px] max-h-[820px] w-full overflow-hidden">
       <Image
-        src="/images/Bootleggers-Exterior-Full-Building-View-1.jpg"
-        alt="Bootleggers Landing — three luxury vacation homes on Anchorage's Cook Inlet"
+        src="/images/Bootleggers-Exterior-Full-Building-View-Cropped_Water.jpg"
+        alt="Cook Inlet and Mt. Susitna view from Bootleggers Landing, Anchorage"
         fill
         priority
         className="object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/55 to-primary/85" />
+      {/* Light overlay only — previous gradient was darkening Sky's source photo
+          too aggressively. Legibility now leans on text-shadow on the headline. */}
       <div className="absolute inset-0 bg-primary/20" />
-      <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 pt-32 pb-12 text-center text-white">
-        <p className="font-sans text-xs uppercase tracking-[0.3em] text-white/80 animate-fade-in-up">
+      <div
+        className="relative z-10 flex h-full flex-col items-center justify-center px-6 pt-32 pb-12 text-center text-white"
+        style={{ textShadow: '0 2px 14px rgba(0,0,0,0.55)' }}
+      >
+        <p className="font-sans text-xs uppercase tracking-[0.3em] text-white/90 animate-fade-in-up">
           Bootleggers Landing
         </p>
         <h1 className="mt-6 max-w-4xl font-serif text-4xl leading-tight md:text-6xl animate-fade-in-up animation-delay-200">
           Three Luxury Stays. <br className="hidden md:block" /> One Coveted Cove.
         </h1>
-        <p className="mt-6 max-w-2xl text-base text-white/95 md:text-lg animate-fade-in-up animation-delay-400">
+        <p className="mt-6 max-w-2xl text-base text-white md:text-lg animate-fade-in-up animation-delay-400">
           A curated collection of vacation homes in Anchorage&rsquo;s most coveted neighborhood —
           Bootleggers&rsquo; Cove. Each is privately appointed, walkable to downtown, and steps
           from the Tony Knowles Coastal Trail.
