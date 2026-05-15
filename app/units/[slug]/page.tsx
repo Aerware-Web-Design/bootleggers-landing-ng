@@ -67,21 +67,29 @@ function UnitHero({ unit }: { unit: Unit }) {
         priority
         className="object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/65 via-primary/45 to-primary/80" />
-      <div className="absolute inset-0 bg-primary/15" />
-      <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 pt-32 pb-12 text-center text-white">
+      {/* Light flat wash + stronger text-shadow keeps the photo legible
+          without darkening it. The smaller kicker and italic tagline get the
+          most help from the shadow — the H1 reads fine on its own. */}
+      <div className="absolute inset-0 bg-primary/35" />
+      <div
+        className="relative z-10 flex h-full flex-col items-center justify-center px-6 pt-32 pb-12 text-center text-white"
+        style={{ textShadow: '0 2px 18px rgba(0,0,0,0.75), 0 1px 4px rgba(0,0,0,0.45)' }}
+      >
         {unit.pairableWithVilla && (
-          <span className="mb-6 rounded-sm bg-accent px-3 py-1 text-xs font-medium uppercase tracking-wider text-accent-foreground animate-fade-in-up">
+          <span
+            className="mb-6 rounded-sm bg-accent px-3 py-1 text-xs font-medium uppercase tracking-wider text-accent-foreground animate-fade-in-up"
+            style={{ textShadow: 'none' }}
+          >
             Pairs with the Villa
           </span>
         )}
-        <p className="font-sans text-xs uppercase tracking-[0.3em] text-white/80 animate-fade-in-up">
+        <p className="font-sans text-xs uppercase tracking-[0.3em] text-white animate-fade-in-up">
           The Collection
         </p>
         <h1 className="mt-4 max-w-4xl font-serif text-4xl leading-tight md:text-6xl animate-fade-in-up animation-delay-200">
           {unit.name}
         </h1>
-        <p className="mt-5 max-w-2xl text-base italic text-white/95 md:text-lg animate-fade-in-up animation-delay-400">
+        <p className="mt-5 max-w-2xl text-base italic text-white md:text-lg animate-fade-in-up animation-delay-400">
           {unit.heroTagline}
         </p>
       </div>
@@ -202,9 +210,16 @@ function UnitAmenities({ unit }: { unit: Unit }) {
         <h2 className="mt-3 text-center font-serif text-3xl text-primary md:text-4xl">
           What&rsquo;s in the home.
         </h2>
-        <ul className="mt-10 grid grid-cols-1 gap-x-10 gap-y-3 text-base text-muted-foreground sm:grid-cols-2">
+        {/* Multi-column layout (not grid) — items flow top-down within each
+            column and the browser balances height automatically, so 2-line
+            bullets sit next to other 2-line bullets and short bullets pair
+            with short. break-inside-avoid keeps each bullet whole. */}
+        <ul className="mt-10 text-base text-muted-foreground sm:columns-2 sm:gap-x-10">
           {unit.amenities.map((amenity) => (
-            <li key={amenity} className="flex items-start gap-3">
+            <li
+              key={amenity}
+              className="mb-3 flex break-inside-avoid items-start gap-3"
+            >
               <span aria-hidden className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
               <span>{amenity}</span>
             </li>
