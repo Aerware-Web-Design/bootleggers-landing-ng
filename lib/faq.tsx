@@ -44,12 +44,37 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     id: 'parking',
     q: "What's parking like?",
-    text: 'Free street parking is available directly outside each home. Denali View Retreat and Urban Gem also have on-site parking spots.',
+    text: 'Free street parking is available directly outside each home. Denali View Retreat and Urban Gem each have their own private garage, ideal for travelers with rental cars or sensitive gear. Anchorage parking enforcement is minimal in this neighborhood.',
+    a: (
+      <>
+        Free street parking is available directly outside each home.{' '}
+        <strong>Denali View Retreat and Urban Gem each have their own private garage</strong>,
+        ideal for travelers with rental cars or sensitive gear. Anchorage parking enforcement is
+        minimal in this neighborhood.
+      </>
+    ),
   },
   {
     id: 'northern-lights',
     q: 'When can I see the Northern Lights?',
-    text: "Aurora viewing in Anchorage runs from late August through April. Our location in Bootleggers' Cove offers minimal light pollution and unobstructed northern views — guests have spotted the lights from the Waterfront Hideaway's private patio and from the upper floors of Denali View Retreat.",
+    text: "Aurora viewing in Anchorage runs from late August through April. Every home in our collection has a viewing-friendly deck, patio, or upper-level windows — Bootleggers' Cove offers minimal light pollution and unobstructed northern sky views. Check the live forecast at the UAF Geophysical Institute Aurora Forecast (gi.alaska.edu/monitors/aurora-forecast) before you book, or while you're here, to plan your viewing nights.",
+    a: (
+      <>
+        Aurora viewing in Anchorage runs from <strong>late August through April</strong>. Every
+        home in our collection has a viewing-friendly deck, patio, or upper-level windows —
+        Bootleggers&rsquo; Cove offers minimal light pollution and unobstructed northern sky
+        views. Check the live forecast at the{' '}
+        <a
+          href="https://www.gi.alaska.edu/monitors/aurora-forecast"
+          target="_blank"
+          rel="noopener"
+          className="text-accent underline-offset-4 hover:underline"
+        >
+          UAF Geophysical Institute Aurora Forecast
+        </a>{' '}
+        before you book, or while you&rsquo;re here, to plan your viewing nights.
+      </>
+    ),
   },
   {
     id: 'pets',
