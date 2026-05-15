@@ -4,7 +4,8 @@ import { FAQ_ITEMS } from '@/lib/faq';
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://bootleggerslanding.com';
 const BUILDING_ID = `${SITE_URL}/#bootleggers-landing`;
 
-// Building-level address only (per Aspen): street name, no number.
+// Building-level address: street name only, no number (per Aspen — the building
+// spans three street numbers, so the building-level entity uses the street name).
 const buildingAddress = {
   '@type': 'PostalAddress',
   streetAddress: 'West 8th Avenue',
@@ -13,6 +14,21 @@ const buildingAddress = {
   postalCode: '99501',
   addressCountry: 'US',
 };
+
+// Each nested VacationRental gets its own street number from unit.address.
+// Expected format: "1475 W 8th Ave, Anchorage, AK 99501".
+function unitPostalAddress(address: string) {
+  const [street, locality, regionAndZip] = address.split(',').map((s) => s.trim());
+  const [region, postalCode] = (regionAndZip ?? '').split(/\s+/);
+  return {
+    '@type': 'PostalAddress',
+    streetAddress: street,
+    addressLocality: locality ?? 'Anchorage',
+    addressRegion: region ?? 'AK',
+    postalCode: postalCode ?? '99501',
+    addressCountry: 'US',
+  };
+}
 
 // Bootleggers' Cove, Anchorage (same neighborhood coords as the villa site).
 const geo = {
@@ -38,7 +54,7 @@ function vacationRentalSchema(unit: Unit, isFeatured: boolean) {
     description: unit.shortDescription,
     url: `${SITE_URL}/units/${unit.slug}`,
     ...(isFeatured ? { mainEntityOfPage: `${SITE_URL}/units/${unit.slug}` } : {}),
-    address: { ...buildingAddress },
+    address: unitPostalAddress(unit.address),
     geo: { ...geo },
     telephone: '+1-907-223-2344',
     email: 'experience@bootleggerslanding.com',

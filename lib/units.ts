@@ -20,9 +20,11 @@ export type Unit = {
   bathrooms: number;
   beds: string;
   maxOccupancy: number;
-  sqFt: number; // PLACEHOLDER — confirm with Aspen
-  nightlyRateMin: number; // PLACEHOLDER — confirm with Aspen
-  nightlyRateMax: number; // PLACEHOLDER — confirm with Aspen
+  sqFt: number;
+  nightlyRateMin: number;
+  nightlyRateMax: number;
+  /** Per-unit street address (used in nested VacationRental schema). */
+  address: string;
   heroTagline: string;
   shortDescription: string;
   longDescription: string;
@@ -43,9 +45,10 @@ export const units: Unit[] = [
     bathrooms: 2.5,
     beds: '2 beds',
     maxOccupancy: 4,
-    sqFt: 1400, // PLACEHOLDER
-    nightlyRateMin: 295, // PLACEHOLDER
-    nightlyRateMax: 395, // PLACEHOLDER
+    sqFt: 1800,
+    nightlyRateMin: 175,
+    nightlyRateMax: 495,
+    address: '1475 W 8th Ave, Anchorage, AK 99501',
     heroTagline: 'Stylish, walkable, and quietly extraordinary.',
     shortDescription:
       "A two-bedroom retreat in Bootleggers' Cove with sweeping views of Cook Inlet and the Sleeping Lady. Walkable to downtown Anchorage, minutes from the train and airport.",
@@ -62,7 +65,7 @@ export const units: Unit[] = [
       'Five-minute walk to the Tony Knowles Coastal Trail',
       'Self-check-in via keypad',
     ],
-    heroPhoto: '/images/Bootleggers-Urban-Gem-Master-View.png',
+    heroPhoto: '/images/Bootleggers-Urban-Gem-Master.png',
     photos: [
       {
         src: '/images/Bootleggers-Urban-Gem-Main.png',
@@ -108,9 +111,10 @@ export const units: Unit[] = [
     bathrooms: 2.5,
     beds: '1 king, 1 queen',
     maxOccupancy: 4,
-    sqFt: 1800, // PLACEHOLDER (3 floors)
-    nightlyRateMin: 345, // PLACEHOLDER
-    nightlyRateMax: 465, // PLACEHOLDER
+    sqFt: 1800,
+    nightlyRateMin: 175,
+    nightlyRateMax: 495,
+    address: '1485 W 8th Ave, Anchorage, AK 99501',
     heroTagline: 'Wake up to Denali. Stay for the morning light.',
     shortDescription:
       'A modern three-story townhome with panoramic views of Denali and Cook Inlet. Two king-and-queen bedrooms, dedicated workspace, and unmatched morning light.',
@@ -173,9 +177,10 @@ export const units: Unit[] = [
     bathrooms: 1,
     beds: '1 queen, 1 sofa bed',
     maxOccupancy: 4,
-    sqFt: 900, // PLACEHOLDER
-    nightlyRateMin: 245, // PLACEHOLDER
-    nightlyRateMax: 365, // PLACEHOLDER
+    sqFt: 600,
+    nightlyRateMin: 100,
+    nightlyRateMax: 435,
+    address: '1495 W 8th Ave, Anchorage, AK 99501',
     heroTagline: "A private hideaway on Bootleggers' edge.",
     shortDescription:
       'A one-bedroom suite with private entrance, sunset patio, and views of Cook Inlet, the Alaska Range, and the summer trains rolling past. Add to a Villa stay or book standalone.',
