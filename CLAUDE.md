@@ -63,7 +63,7 @@ The guest confirmation copy says "we'll be in touch within 24 hours — usually 
 ## Data layer — single source of truth
 
 - **`lib/units.ts`** — typed `Unit[]` array. Imported by the homepage, `/units/[slug]` pages, schema, and sitemap. Adding a 4th unit later = one entry here.
-- `sqFt` and `nightlyRateMin/Max` carry **realistic placeholder numbers marked `// PLACEHOLDER`** pending Sky's real values. **Do not switch them to `null`** even though `sibling-content.md` says to — Aspen overrode that handling so layout previews correctly. See `~/.claude/projects/-Users-aspen-Code/memory/feedback_bootleggers_placeholders.md`.
+- `sqFt`, `nightlyRateMin/Max`, and the per-unit `address` field carry Sky's confirmed real values (landed May 12, 2026). No more placeholders. The `Unit` type's `address` is plain `string` formatted `"<number> <street>, Anchorage, AK 99501"`; `SchemaMarkup.unitPostalAddress()` parses it for the nested `VacationRental` entities.
 - `lib/faq.tsx` — `FAQ_ITEMS` and the `FaqItem` type. Lives outside `components/FAQ.tsx` (which is `'use client'`) so the server-side `SchemaMarkup` can import it without crossing the client boundary (the import otherwise comes through as a module-reference proxy).
 - `lib/contact-schema.ts` — shared zod schema used by the form and the API route.
 
@@ -78,9 +78,9 @@ The guest confirmation copy says "we'll be in touch within 24 hours — usually 
 
 ## Page architecture
 
-- Homepage (`app/page.tsx`) — collection hero, about-the-building, three `UnitCard`s (ordered Denali → Waterfront → Urban Gem via `HOMEPAGE_ORDER`), FAQ accordion (8 Qs), inquiry form, footer with reverse cross-link to luxuryanchorage.rentals.
-- `/units/[slug]` — dynamic route with `generateStaticParams` (prerendered at build) + per-unit `generateMetadata`. Renders hero, stat bar, narrative, `PhotoGallery` (lightbox), amenities, inquiry block (dark variant, unit pre-selected), "other homes" footer.
-- `<SchemaMarkup>` mounts on every page: `LodgingBusiness` + 3 nested `VacationRental` entities + `FAQPage` (homepage only). Building-level address only — street name no number per Aspen.
+- Homepage (`app/page.tsx`) — sections in order: `Hero` (Sleeping Lady Sunset background, 75vh, primary/30 wash, text-shadowed centered text), `AboutBuilding` (2-photo grid of aerial + ground-level shots above the body copy + Villa cross-link), `Stays` (three `UnitCard`s ordered Denali → Waterfront → Urban Gem via `HOMEPAGE_ORDER`), `ViewFromHere` (panoramic Cook Inlet at aspect-[5/2] on top, Mt. Spurr + Northern Lights side-by-side below, with the "view from every home" caption from `sibling-content.md` — room for a 4th photo when Aspen adds one), `FAQ` accordion (8 Qs), `Contact` inquiry form, then `SiteFooter` with reverse cross-link to luxuryanchorage.rentals.
+- `/units/[slug]` — dynamic route with `generateStaticParams` (prerendered at build) + per-unit `generateMetadata`. Renders hero (light `primary/35` wash + layered text-shadow — was a heavy stacked gradient until May 12), stat bar, narrative, `PhotoGallery` (lightbox), amenities (CSS multi-column layout via `sm:columns-2 break-inside-avoid` so 2-line bullets pair with other 2-line bullets — was a strict 2-col grid until May 12), inquiry block (dark variant, unit pre-selected), "other homes" footer.
+- `<SchemaMarkup>` mounts on every page: `LodgingBusiness` (building-level, address = "West 8th Avenue" with no street number) + 3 nested `VacationRental` entities (each using its own unit's full street address via `unitPostalAddress()`) + `FAQPage` (homepage only).
 - `app/sitemap.ts` + `app/robots.ts` derive from `lib/units.ts`.
 
 ## People & contact
@@ -112,12 +112,23 @@ The guest confirmation copy says "we'll be in touch within 24 hours — usually 
 - Surface blockers (missing data, ambiguous instructions) rather than improvising. Especially: don't invent marketing copy — pull from `sibling-content.md`.
 - No custom-domain wiring on Vercel until Sky's explicit approval (planned May 27–28, 2026).
 
+## Running locally (PATH gotcha)
+
+`pnpm` and `node` are not on the harness's default `PATH`. Aspen uses nvm. Before any `pnpm dev` / `pnpm build` / `pnpm exec tsc`:
+
+```bash
+export PATH="/Users/aspen/.nvm/versions/node/v24.12.0/bin:$PATH"
+```
+
+Then `pnpm dev` from `/Users/aspen/Code/bootleggers-landing-ng` brings up `http://localhost:3000`. Run it via the Bash `run_in_background` flag.
+
 ## Pending Aspen-side inputs (none blocking the preview)
 
 - **3 Google Calendar IDs** — for the `AvailabilityCalendar` component (one calendar per unit, each subscribed to its Airbnb iCal feed). Aspen creates the calendars + subscribes the feeds; agent then builds `components/AvailabilityCalendar.tsx` (iframe wrapper, `calendarId` prop, fallback message), adds a `calendarId` field per unit in `lib/units.ts`, and wires a "Check Availability" section into each detail page above the inquiry CTA.
+- **Urban Gem bed photo** (`Bootleggers-Urban-Gem-Master-View.png`) — Sky wanted a pillow added to the dark bed shot. Aspen is photoshopping/reshooting. Until the new file lands, Urban Gem's `heroPhoto` is `/images/Bootleggers-Urban-Gem-Master.png` (the alternate); swap back to `Master-View.png` when Aspen drops the new file.
+- **Optional 4th "View From Here" photo** — `ViewFromHere` section is laid out with room for another atmospheric shot. Drop it in when/if Aspen adds one.
 - **GA4 measurement ID** (`G-XXXXXXX`) for the new sibling property — wire gtag in `app/layout.tsx` with cross-domain measurement to the villa property `G-J2V0ZJC643`.
 - **SMTP App Password** for `experience@bootleggerslanding.com` — drop into Vercel env (and local `.env.local`) to switch the API route from console-log to real send.
-- **Real sqFt + nightly rate ranges** from Sky — swap into `lib/units.ts` (remove the `// PLACEHOLDER` comments when real).
 
 ## Out of scope for this sprint
 
