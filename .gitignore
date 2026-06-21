@@ -29,3 +29,8 @@ next-env.d.ts
 
 # OS
 .DS_Store
+
+# local-only notes (never push to the public repo)
+*.local.md
+/notes/
+CLAUDE.md
