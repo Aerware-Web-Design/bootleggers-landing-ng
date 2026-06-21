@@ -130,3 +130,10 @@ html {
 
 .animate-accordion-down { animation: accordion-down 200ms ease-out; }
 .animate-accordion-up   { animation: accordion-up   200ms ease-out; }
+
+/* react-day-picker: booked nights (per-property availability calendar) */
+.rdp-booked {
+  text-decoration: line-through;
+  color: var(--muted-foreground);
+  opacity: 0.5;
+}

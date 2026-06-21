@@ -56,7 +56,6 @@ function vacationRentalSchema(unit: Unit, isFeatured: boolean) {
     ...(isFeatured ? { mainEntityOfPage: `${SITE_URL}/units/${unit.slug}` } : {}),
     address: unitPostalAddress(unit.address),
     geo: { ...geo },
-    telephone: '+1-907-223-2344',
     email: 'experience@bootleggerslanding.com',
     numberOfBedrooms: unit.bedrooms,
     // Bedrooms + bathrooms (rounded up) + kitchen + living room.
@@ -122,7 +121,6 @@ function lodgingBusinessSchema() {
     ],
     address: { ...buildingAddress },
     geo: { ...geo },
-    telephone: '+1-907-223-2344',
     email: 'experience@bootleggerslanding.com',
     priceRange: '$$$',
     petsAllowed: false,

@@ -29,6 +29,9 @@ export function SiteHeader({ homeHref = '/#top', inquireHref = '/#contact' }: Pr
           <a href="/#faq" className="transition hover:text-accent">
             FAQ
           </a>
+          <a href="/availability" className="transition hover:text-accent">
+            Availability
+          </a>
           <a
             href="https://luxuryanchorage.rentals"
             target="_blank"
@@ -42,7 +45,7 @@ export function SiteHeader({ homeHref = '/#top', inquireHref = '/#contact' }: Pr
           href={inquireHref}
           className="rounded-md bg-accent px-4 py-2 text-xs font-medium uppercase tracking-wider text-accent-foreground transition hover:opacity-90"
         >
-          Inquire
+          Book
         </a>
       </div>
     </header>

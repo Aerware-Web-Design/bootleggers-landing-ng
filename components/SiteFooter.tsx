@@ -15,10 +15,6 @@ export function SiteFooter() {
         <p className="mt-6 text-sm opacity-80">
           <a href="mailto:experience@bootleggerslanding.com" className="hover:underline">
             experience@bootleggerslanding.com
-          </a>{' '}
-          ·{' '}
-          <a href="tel:9072232344" className="hover:underline">
-            (907) 223-2344
           </a>
         </p>
         <p className="mt-4 text-xs uppercase tracking-[0.3em] opacity-60">

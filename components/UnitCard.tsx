@@ -4,7 +4,7 @@ import { formatRateRange, type Unit } from '@/lib/units';
 
 export function UnitCard({ unit }: { unit: Unit }) {
   return (
-    <article className="group flex flex-col overflow-hidden rounded-lg border border-border bg-card shadow-sm transition hover:shadow-lg">
+    <article className="group relative flex flex-col overflow-hidden rounded-lg border border-border bg-card shadow-sm transition hover:shadow-lg">
       <div className="relative aspect-[4/3] w-full overflow-hidden">
         <Image
           src={unit.heroPhoto}
@@ -39,24 +39,25 @@ export function UnitCard({ unit }: { unit: Unit }) {
             <p className="text-xs uppercase tracking-wider text-muted-foreground">Nightly</p>
             <p className="mt-1 font-serif text-xl text-primary">{formatRateRange(unit)}</p>
           </div>
-          <div className="mt-6 flex flex-col gap-2 sm:flex-row">
-            <Link
-              href={`/units/${unit.slug}`}
-              className="flex min-h-11 flex-1 items-center justify-center rounded-md bg-primary px-4 py-2.5 text-center text-sm font-medium uppercase leading-tight tracking-wider text-primary-foreground transition hover:opacity-90"
-            >
-              View Details
-            </Link>
+          <div className="mt-6">
             <a
               href={unit.airbnbUrl}
               target="_blank"
               rel="noopener"
-              className="flex min-h-11 flex-1 items-center justify-center rounded-md border border-primary px-4 py-2.5 text-center text-sm font-medium uppercase leading-tight tracking-wider text-primary transition hover:bg-primary hover:text-primary-foreground"
+              className="relative z-10 flex min-h-11 w-full items-center justify-center rounded-md bg-primary px-4 py-2.5 text-center text-sm font-medium uppercase leading-tight tracking-wider text-primary-foreground transition hover:opacity-90"
             >
               Book on Airbnb
             </a>
           </div>
         </div>
       </div>
+      <Link
+        href={`/units/${unit.slug}`}
+        aria-label={`View ${unit.name}`}
+        className="absolute inset-0 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+      >
+        <span className="sr-only">View {unit.name}</span>
+      </Link>
     </article>
   );
 }

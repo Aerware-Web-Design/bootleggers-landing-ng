@@ -3,9 +3,9 @@ import { units } from '@/lib/units';
 import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { UnitCard } from '@/components/UnitCard';
-import { InquiryForm } from '@/components/InquiryForm';
 import { FAQ } from '@/components/FAQ';
 import { SchemaMarkup } from '@/components/SchemaMarkup';
+import { AvailabilitySearchSection } from '@/components/AvailabilitySearchSection';
 
 const HOMEPAGE_ORDER = ['denali-view-retreat', 'waterfront-hideaway', 'urban-gem'];
 
@@ -22,6 +22,7 @@ export default function HomePage() {
         <Hero />
         <AboutBuilding />
         <Stays />
+        <AvailabilitySearchSection className="border-t border-border" />
         <ViewFromHere />
         <FAQ />
         <Contact />
@@ -229,19 +230,27 @@ function ViewFromHere() {
 function Contact() {
   return (
     <section id="contact" className="scroll-mt-20 px-6 py-24">
-      <div className="mx-auto max-w-4xl">
-        <div className="text-center">
-          <p className="font-sans text-xs uppercase tracking-[0.3em] text-accent">Inquire</p>
-          <h2 className="mt-4 font-serif text-3xl text-primary md:text-4xl">
-            Tell us about your stay.
-          </h2>
-          <p className="mt-4 text-base text-muted-foreground md:text-lg">
-            Send your dates and a few details and we&rsquo;ll be in touch shortly. Not sure
-            which home is the right fit? We&rsquo;ll help you decide.
-          </p>
-        </div>
-        <div className="mt-12">
-          <InquiryForm heading="" />
+      <div className="mx-auto max-w-4xl text-center">
+        <p className="font-sans text-xs uppercase tracking-[0.3em] text-accent">Reserve</p>
+        <h2 className="mt-4 font-serif text-3xl text-primary md:text-4xl">
+          Book your stay.
+        </h2>
+        <p className="mt-4 text-base text-muted-foreground md:text-lg">
+          Reserve any of our three homes directly on Airbnb. Not sure which is the right
+          fit? Explore the collection above.
+        </p>
+        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          {units.map((unit) => (
+            <a
+              key={unit.slug}
+              href={unit.airbnbUrl}
+              target="_blank"
+              rel="noopener"
+              className="rounded-md bg-accent px-6 py-3 text-sm font-medium uppercase tracking-wider text-accent-foreground transition hover:opacity-90"
+            >
+              {unit.name}
+            </a>
+          ))}
         </div>
       </div>
     </section>
