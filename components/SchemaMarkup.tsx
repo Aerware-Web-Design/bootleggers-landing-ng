@@ -1,5 +1,6 @@
 import { units, type Unit } from '@/lib/units';
 import { FAQ_ITEMS } from '@/lib/faq';
+import { ratingForSlug, reviewsForSlug, type GuestReview } from '@/lib/reviews';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://bootleggerslanding.com';
 const BUILDING_ID = `${SITE_URL}/#bootleggers-landing`;
@@ -45,7 +46,42 @@ function unitId(slug: string): string {
   return `${SITE_URL}/units/${slug}#vacation-rental`;
 }
 
+function reviewSchema(review: GuestReview) {
+  return {
+    '@type': 'Review',
+    reviewRating: {
+      '@type': 'Rating',
+      ratingValue: String(review.rating ?? 5),
+      bestRating: '5',
+    },
+    author: { '@type': 'Person', name: review.author },
+    reviewBody: review.quote,
+    ...(review.date ? { datePublished: review.date } : {}),
+  };
+}
+
 function vacationRentalSchema(unit: Unit, isFeatured: boolean) {
+  const rating = ratingForSlug(unit.slug);
+  const reviews = reviewsForSlug(unit.slug);
+  // Only emit aggregateRating/review markup when real reviews are visible on
+  // the site — keeps structured data backed by on-page content (no review-snippet spam).
+  const reviewMarkup =
+    reviews.length > 0
+      ? {
+          ...(rating
+            ? {
+                aggregateRating: {
+                  '@type': 'AggregateRating',
+                  ratingValue: String(rating.rating),
+                  reviewCount: String(rating.reviewCount),
+                  bestRating: '5',
+                },
+              }
+            : {}),
+          review: reviews.map(reviewSchema),
+        }
+      : {};
+
   return {
     '@context': 'https://schema.org',
     '@type': 'VacationRental',
@@ -93,6 +129,7 @@ function vacationRentalSchema(unit: Unit, isFeatured: boolean) {
       '@id': BUILDING_ID,
       name: 'Bootleggers Landing',
     },
+    ...reviewMarkup,
     ...(unit.pairableWithVilla
       ? {
           isRelatedTo: {

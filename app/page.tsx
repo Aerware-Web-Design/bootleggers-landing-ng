@@ -4,6 +4,7 @@ import { SiteHeader } from '@/components/SiteHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { UnitCard } from '@/components/UnitCard';
 import { FAQ } from '@/components/FAQ';
+import { Reviews } from '@/components/Reviews';
 import { SchemaMarkup } from '@/components/SchemaMarkup';
 import { AvailabilitySearchSection } from '@/components/AvailabilitySearchSection';
 
@@ -24,6 +25,8 @@ export default function HomePage() {
         <Stays />
         <AvailabilitySearchSection className="border-t border-border" />
         <ViewFromHere />
+        {/* Renders nothing until real quotes land in lib/reviews.ts (GUEST_REVIEWS). */}
+        <Reviews className="bg-background" />
         <FAQ />
         <Contact />
       </main>
