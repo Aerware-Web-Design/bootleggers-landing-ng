@@ -39,8 +39,8 @@ function Hero() {
   return (
     <section className="relative h-[75vh] min-h-[560px] max-h-[820px] w-full overflow-hidden">
       <Image
-        src="/images/Bootleggers-View-Outside-Sleeping-Lady-Sunset.jpg"
-        alt="Orange sunset over Cook Inlet with the Sleeping Lady (Mt. Susitna) silhouetted on the horizon"
+        src="/images/Bootleggers-Hero-MidnightSun-Upright.jpg"
+        alt="Midnight sun glowing gold over Cook Inlet and the Alaska Range, seen from Bootleggers Landing"
         fill
         priority
         className="object-cover"
@@ -92,7 +92,7 @@ function AboutBuilding() {
         <div className="mx-auto max-w-3xl text-center">
           <p className="font-sans text-xs uppercase tracking-[0.3em] text-accent">The Building</p>
           <h2 className="mt-4 font-serif text-3xl text-primary md:text-4xl">
-            Where the city quiets and the inlet opens.
+            Where the city quiets and the inlet begins.
           </h2>
         </div>
 
@@ -113,8 +113,8 @@ function AboutBuilding() {
           </div>
           <div className="relative aspect-[4/3] overflow-hidden rounded-md shadow-sm">
             <Image
-              src="/images/Bootleggers_Exterior_Building.jpg"
-              alt="Street-level view of the Bootleggers Landing townhomes on West 8th Avenue, with house numbers visible"
+              src="/images/Bootleggers-Building-Aerial-Inlet-v2.jpg"
+              alt="Cook Inlet and the Alaska Range seen over the Bootleggers Landing townhomes and the coastal railroad"
               fill
               sizes="(min-width: 768px) 50vw, 100vw"
               className="object-cover"
@@ -126,7 +126,7 @@ function AboutBuilding() {
           <p>
             Bootleggers&rsquo; Cove sits at the quiet edge of Anchorage, where the city softens
             into Cook Inlet and the Alaska Range fills the western horizon. Our building is
-            fifteen minutes on foot from downtown dining, five from the Tony Knowles Coastal
+            ten minutes on foot from downtown dining, five from the Tony Knowles Coastal
             Trail — yet tucked into a residential pocket where summer trains roll past on their
             way to Seward and Whittier, and the only sound after dark is the wind off the water.
           </p>

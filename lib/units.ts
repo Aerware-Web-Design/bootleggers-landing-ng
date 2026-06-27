@@ -47,13 +47,13 @@ export const units: Unit[] = [
     maxOccupancy: 4,
     sqFt: 1800,
     nightlyRateMin: 175,
-    nightlyRateMax: 495,
+    nightlyRateMax: 650,
     address: '1475 W 8th Ave, Anchorage, AK 99501',
     heroTagline: 'Stylish, walkable, and quietly extraordinary.',
     shortDescription:
       "A two-bedroom retreat in Bootleggers' Cove with sweeping views of Cook Inlet and the Sleeping Lady. Walkable to downtown Anchorage, minutes from the train and airport.",
     longDescription:
-      "Urban Gem is the most centrally located residence in our collection — a beautifully designed two-bedroom home that puts you within walking distance of Anchorage's best restaurants, galleries, and the Tony Knowles Coastal Trail, while keeping you firmly inside the quiet exclusivity of Bootleggers' Cove.\n\nStep inside and the language is contemporary luxury: clean lines, natural light, considered furnishings. Both bedrooms are configured with their own private bathrooms, and a half-bath off the main living area means hosting feels effortless. The kitchen is fully equipped for everything from a quick breakfast to a multi-course dinner with views of the Sleeping Lady (Mt. Susitna) as your backdrop.\n\nWhat sets Urban Gem apart is the location-to-luxury ratio. You're five minutes from the Alaska Railroad station — the gateway to Seward, Whittier, and Denali day trips. Ten minutes from Ted Stevens International. Fifteen on foot to downtown dining. And from the moment you close the front door behind you, you're back in a residential pocket where Cook Inlet glints through the trees and the only sound is the wind off the water.\n\nIdeal for couples traveling together, business travelers needing space and connectivity, or families who want both the city and the cove.",
+      "Urban Gem is the most centrally located residence in our collection — a beautifully designed two-bedroom home that puts you within walking distance of Anchorage's best restaurants, galleries, and the Tony Knowles Coastal Trail, while keeping you firmly inside the quiet exclusivity of Bootleggers' Cove.\n\nStep inside and the language is contemporary luxury: clean lines, natural light, considered furnishings. Both bedrooms are configured with their own private bathrooms, and a half-bath off the main living area means hosting feels effortless. The kitchen is fully equipped for everything from a quick breakfast to a multi-course dinner with views of the Sleeping Lady (Mt. Susitna) as your backdrop.\n\nWhat sets Urban Gem apart is the location-to-luxury ratio. You're five minutes from the Alaska Railroad station — the gateway to Seward, Whittier, and Denali day trips. Ten minutes from Ted Stevens International. Ten on foot to downtown dining. And from the moment you close the front door behind you, you're back in a residential pocket where Cook Inlet glints through the trees and the only sound is the wind off the water.\n\nIdeal for couples traveling together, business travelers needing space and connectivity, or families who want both the city and the cove.",
     amenities: [
       'Two bedrooms with en-suite bathrooms, plus a half bath',
       'Fully equipped gourmet kitchen',
@@ -113,7 +113,7 @@ export const units: Unit[] = [
     maxOccupancy: 4,
     sqFt: 1800,
     nightlyRateMin: 175,
-    nightlyRateMax: 495,
+    nightlyRateMax: 650,
     address: '1485 W 8th Ave, Anchorage, AK 99501',
     heroTagline: 'Wake up to Denali. Stay for the morning light.',
     shortDescription:
@@ -180,7 +180,7 @@ export const units: Unit[] = [
     maxOccupancy: 4,
     sqFt: 600,
     nightlyRateMin: 100,
-    nightlyRateMax: 435,
+    nightlyRateMax: 350,
     address: '1495 W 8th Ave, Anchorage, AK 99501',
     heroTagline: "A private hideaway on Bootleggers' edge.",
     shortDescription:
