@@ -2,7 +2,13 @@ import type { Metadata } from 'next';
 import { Inter, Playfair_Display } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import { Toaster } from 'sonner';
+import Script from 'next/script';
 import './globals.css';
+
+// GA4 for THIS site only — a separate property from the villa (no cross-domain
+// link to G-J2V0ZJC643). Set NEXT_PUBLIC_GA_MEASUREMENT_ID in Vercel env +
+// .env.local; until then GA renders nothing.
+const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
 const inter = Inter({
   subsets: ['latin'],
@@ -39,6 +45,12 @@ export const metadata: Metadata = {
     follow: true,
     googleBot: { index: true, follow: true },
   },
+  // Search Console site verification (this site's own property). Optional —
+  // set GOOGLE_SITE_VERIFICATION to the token from the GSC "HTML tag" method,
+  // or just verify via the Google Analytics method once GA4 is live.
+  ...(process.env.GOOGLE_SITE_VERIFICATION
+    ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
+    : {}),
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -48,6 +60,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <Toaster position="top-center" richColors closeButton />
         <Analytics />
+        {GA_ID ? (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_ID}');
+              `}
+            </Script>
+          </>
+        ) : null}
       </body>
     </html>
   );
