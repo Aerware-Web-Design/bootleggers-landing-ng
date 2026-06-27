@@ -21,7 +21,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://bootleggerslanding.
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Bootleggers Landing — Three Luxury Residences in Anchorage',
+    default: 'Bootleggers Landing — Three Luxury Stays in Anchorage',
     template: '%s · Bootleggers Landing',
   },
   description:
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     type: 'website',
     url: siteUrl,
     siteName: 'Bootleggers Landing',
-    title: 'Bootleggers Landing — Three Luxury Residences in Anchorage',
+    title: 'Bootleggers Landing — Three Luxury Stays in Anchorage',
     description:
       "A curated collection of three luxury vacation rentals in Anchorage's Bootleggers' Cove.",
   },
