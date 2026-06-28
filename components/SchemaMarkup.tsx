@@ -2,7 +2,7 @@ import { units, type Unit } from '@/lib/units';
 import { FAQ_ITEMS } from '@/lib/faq';
 import { ratingForSlug, reviewsForSlug, type GuestReview } from '@/lib/reviews';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://bootleggerslanding.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.bootleggerslanding.com';
 const BUILDING_ID = `${SITE_URL}/#bootleggers-landing`;
 
 // Building-level address: street name only, no number (per Aspen — the building

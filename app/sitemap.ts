@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { units } from '@/lib/units';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://bootleggerslanding.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.bootleggerslanding.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
